@@ -17,27 +17,27 @@ Start by adding a MenuLayout to the xml you pretend to use in your drawer layout
 Then get the view and build your menu using the builder within MenuLayout:
 
     MenuLayout menuLayout = (MenuLayout) inflatedView.findViewById(R.id.menu_layout);
-        MenuLayout.Builder menuLayoutBuilder = menuLayout.getBuilder();
-        mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
-            @Override
-            public void onClick(mazoni.menulayout.MenuItem menuItem) {
-                Log.d("MenuItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
-            }
+    MenuLayout.Builder menuLayoutBuilder = menuLayout.getBuilder();
+    mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
+        @Override
+        public void onClick(mazoni.menulayout.MenuItem menuItem) {
+            Log.d("MenuItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
+        }
 
-            @Override
-            public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
-                Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
-            }
-        };
-        menuLayoutBuilder.
-                addMenuItem("Category 1", listener).setAsSection().
-                addMenuItem("Item 1", listener).
-                addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
-                addMenuItem("Item 2", listener).
-                addMenuItem("Category 2", listener).setAsSection().
-                addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
-                addMenuItem("Item 1", listener).
-                addMenuItem("Item 2", listener).
-                create();
+        @Override
+        public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
+            Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
+        }
+    };
+    menuLayoutBuilder.
+            addMenuItem("Category 1", listener).setAsSection().
+            addMenuItem("Item 1", listener).
+            addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
+            addMenuItem("Item 2", listener).
+            addMenuItem("Category 2", listener).setAsSection().
+            addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
+            addMenuItem("Item 1", listener).
+            addMenuItem("Item 2", listener).
+            create();
 
 

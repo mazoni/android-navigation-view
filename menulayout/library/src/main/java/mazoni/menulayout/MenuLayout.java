@@ -52,69 +52,111 @@ public class MenuLayout extends LinearLayout {
     public class Builder {
         private List<MenuItem> items;
         private MenuItem lastItem;
+        private int sectionLayout = R.layout.section_item;
+        private int itemLayout = R.layout.menu_item;
+        private MenuItem.Listener defaultListener = null;
 
         protected Builder() {
             items = new ArrayList<MenuItem>();
         }
 
         /**
-         * Adds an item specifying every possible detail about it
-         * @param icon
-         * @param label
-         * @param tag
-         * @param layout this layout should contains one @id/label and one @id/icon
-         * @param listener
+         * Uses the layout in argument as default layout for sections
+         * @param sectionLayout
          * @return
          */
-        public Builder addMenuItem(int icon, String label, String tag, int layout, MenuItem.Listener listener) {
-            Drawable iconDrawable = icon == 0? null : getResources().getDrawable(icon);
-            MenuItem menuItem = new MenuItem(iconDrawable, label, tag, layout);
-            menuItem.setListener(listener);
-            items.add(menuItem);
-            lastItem = menuItem;
+        public Builder useSectionLayout(int sectionLayout) {
+            this.sectionLayout = sectionLayout;
             return this;
         }
 
         /**
-         * Adds a menu item using the default layout, which is R.layout.menu_item of this library
-         * @param icon
-         * @param label
-         * @param tag
-         * @param listener
+         * Uses the layout in argument as default layout for items
+         * @param itemLayout
          * @return
          */
-        public Builder addMenuItem(int icon, String label, String tag, MenuItem.Listener listener) {
-            addMenuItem(icon, label, tag, R.layout.menu_item, listener);
+        public Builder useItemLayout(int itemLayout) {
+            this.itemLayout = itemLayout;
             return this;
         }
 
         /**
          * Adds a menu item using the array position as tag and no icon
          * @param label
-         * @param listener
          * @return
          */
-        public Builder addMenuItem(String label, MenuItem.Listener listener) {
-            addMenuItem(0, label, String.valueOf(items.size()), R.layout.menu_item, listener);
+        public Builder addItem(String label) {
+            addItem(0, label, String.valueOf(items.size()), R.layout.menu_item, defaultListener);
             return this;
         }
 
         /**
-         * Sets a listener to the last item added to the builder
-         * @param listener
+         * Sets the last added item to use section layout
          * @return
          */
-        public Builder setListener(MenuItem.Listener listener) {
-            lastItem.setListener(listener);
+        public Builder asSection() {
+            lastItem.setLayout(this.sectionLayout);
             return this;
         }
 
         /**
-         * Sets the layout to the default R.layout.section_item
+         * Uses the icon in argument in the last inserted item
+         * @param icon
          * @return
          */
-        public Builder setAsSection() {
-            lastItem.setLayout(R.layout.section_item);
+        public Builder withIcon(int icon) {
+            Drawable iconDrawable = icon == 0? null : getResources().getDrawable(icon);
+            return withIcon(iconDrawable);
+        }
+
+        /**
+         * Uses the icon in argument in the last inserted item
+         * @param icon
+         * @return
+         */
+        public Builder withIcon(Drawable icon) {
+            lastItem.setIcon(icon);
+            return this;
+        }
+
+        /**
+         * Tags the last added item with the argument tag
+         * @param tag
+         * @return
+         */
+        public Builder taggedWith(String tag) {
+            lastItem.setTag(tag);
+            return this;
+        }
+
+        /**
+         * Uses the layout argument as a custom layout to the last added item
+         * @param layout
+         * @return
+         */
+        public Builder intoLayout(int layout) {
+            lastItem.setLayout(layout);
+            return this;
+        }
+
+        /**
+         * If no item was added, uses the argument listener as default listener
+         * If an item was added, uses the argument listener as listener only of the last item
+         * @param listener
+         * @return
+         */
+        public Builder inform(MenuItem.Listener listener) {
+            if(lastItem != null) lastItem.setListener(listener);
+            else defaultListener = listener;
+            return this;
+        }
+
+        private Builder addItem(int icon, String label, String tag, int layout, MenuItem.Listener listener) {
+            Drawable iconDrawable = icon == 0? null : getResources().getDrawable(icon);
+            MenuItem menuItem = new MenuItem(iconDrawable, label, tag, layout);
+            menuItem.setListener(listener);
+            items.add(menuItem);
+            lastItem = menuItem;
             return this;
         }
 

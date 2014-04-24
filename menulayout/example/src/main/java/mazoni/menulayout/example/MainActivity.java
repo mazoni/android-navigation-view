@@ -2,6 +2,7 @@ package mazoni.menulayout.example;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,12 +20,12 @@ public class MainActivity extends ActionBarActivity {
         mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
             @Override
             public void onClick(mazoni.menulayout.MenuItem menuItem) {
-
+                Log.d("MenuItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
             }
 
             @Override
             public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
-
+                Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
             }
         };
         menuLayoutBuilder.
@@ -39,7 +40,6 @@ public class MainActivity extends ActionBarActivity {
                 create();
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

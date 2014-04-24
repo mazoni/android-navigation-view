@@ -11,7 +11,7 @@ There is always a need to create a listview, an adapter to it, a class to store 
 
 Start by adding a MenuLayout to the xml you pretend to use in your drawer layout:
 
-    <mazoni.menulayout.MenuLayout
+    <mazoni.menulayout.MenuView
         android:id="@+id/menu_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

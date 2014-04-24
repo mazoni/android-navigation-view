@@ -3,7 +3,9 @@ android-menu-layout
 
 ## Overview
 
-In app navigation using drawers has become a standard way to navigate through applications, and there are a lot of libraries that help you build the drawer layout experience, although I didn't found any library that would help the developer to build the menu itself. We always need to create a listview, an adapter to it, a class to store the data about the menu item and that's why I've created this library. To facilitate how to easily implement a menu to your app allowing you to do any customization to layouts or list view while decreasing the developer work by A LOT.
+In app navigation using drawers has become a standard way to navigate through applications, and there are a lot of libraries that help you build the drawer layout experience, although I didn't found any library that would help the developer to build the menu itself. 
+
+There is always a need to create a listview, an adapter to it, a class to store the data about the menu item and that's why I've created this library. To facilitate how to easily implement a menu to your app allowing you to do any customization to layouts or list view while decreasing the developer work by A LOT.
 
 ## Usage
 

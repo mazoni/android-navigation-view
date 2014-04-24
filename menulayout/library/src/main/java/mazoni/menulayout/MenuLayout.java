@@ -124,7 +124,7 @@ public class MenuLayout extends LinearLayout {
          * @param tag
          * @return
          */
-        public Builder taggedWith(String tag) {
+        public Builder tagged(String tag) {
             lastItem.setTag(tag);
             return this;
         }

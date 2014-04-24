@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
         menuLayoutBuilder.inform(listener).
                 addItem("Category 1").asSection().
                 addItem("Item 1").
-                addItem("item with icon").withIcon(R.drawable.icon_star).taggedWith("with-icon").
+                addItem("item with icon").withIcon(R.drawable.icon_star).tagged("with-icon").
                 addItem("Special Item").inform(specialListener).
                 addItem("Category 2").asSection().
                 addItem("item with icon").withIcon(R.drawable.icon_star).

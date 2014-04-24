@@ -31,15 +31,26 @@ Then get the view and build your menu using the builder within MenuLayout:
             Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
         }
     };
-    menuLayoutBuilder.
-            addMenuItem("Category 1", listener).setAsSection().
-            addMenuItem("Item 1", listener).
-            addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
-            addMenuItem("Item 2", listener).
-            addMenuItem("Category 2", listener).setAsSection().
-            addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
-            addMenuItem("Item 1", listener).
-            addMenuItem("Item 2", listener).
+    mazoni.menulayout.MenuItem.Listener specialListener = new mazoni.menulayout.MenuItem.Listener() {
+        @Override
+        public void onClick(mazoni.menulayout.MenuItem menuItem) {
+            Log.d("SpecialItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
+        }
+
+        @Override
+        public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
+            Log.d("SpecialItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
+        }
+    };
+    menuLayoutBuilder.inform(listener).
+            addItem("Category 1").asSection().
+            addItem("Item 1").
+            addItem("item with icon").withIcon(R.drawable.icon_star).taggedWith("with-icon").
+            addItem("Special Item").inform(specialListener).
+            addItem("Category 2").asSection().
+            addItem("item with icon").withIcon(R.drawable.icon_star).
+            addItem("Item 1").
+            addItem("Item 2").
             create();
 
 ## Example Result

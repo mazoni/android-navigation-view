@@ -20,28 +20,8 @@ Then get the view and build your menu using the builder within MenuLayout:
 
     MenuLayout menuLayout = (MenuLayout) inflatedView.findViewById(R.id.menu_layout);
     MenuLayout.Builder menuLayoutBuilder = menuLayout.getBuilder();
-    mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
-        @Override
-        public void onClick(mazoni.menulayout.MenuItem menuItem) {
-            Log.d("MenuItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
-        }
-
-        @Override
-        public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
-            Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
-        }
-    };
-    mazoni.menulayout.MenuItem.Listener specialListener = new mazoni.menulayout.MenuItem.Listener() {
-        @Override
-        public void onClick(mazoni.menulayout.MenuItem menuItem) {
-            Log.d("SpecialItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
-        }
-
-        @Override
-        public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
-            Log.d("SpecialItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
-        }
-    };
+    mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {...};
+    mazoni.menulayout.MenuItem.Listener specialListener = new mazoni.menulayout.MenuItem.Listener() {...};
     menuLayoutBuilder.inform(listener).
             addItem("Category 1").asSection().
             addItem("Item 1").

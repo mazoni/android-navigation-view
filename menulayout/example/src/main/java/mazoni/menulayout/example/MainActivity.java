@@ -19,23 +19,23 @@ public class MainActivity extends ActionBarActivity {
         MenuLayout.Builder menuLayoutBuilder = menuLayout.getBuilder();
         mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
             @Override
-            public void onClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemClick(mazoni.menulayout.MenuItem menuItem) {
                 Log.d("MenuItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
             }
 
             @Override
-            public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemLongClick(mazoni.menulayout.MenuItem menuItem) {
                 Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
             }
         };
         mazoni.menulayout.MenuItem.Listener specialListener = new mazoni.menulayout.MenuItem.Listener() {
             @Override
-            public void onClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemClick(mazoni.menulayout.MenuItem menuItem) {
                 Log.d("SpecialItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
             }
 
             @Override
-            public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemLongClick(mazoni.menulayout.MenuItem menuItem) {
                 Log.d("SpecialItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
             }
         };

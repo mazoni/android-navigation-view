@@ -134,7 +134,7 @@ public class MenuLayout extends LinearLayout {
          * @param layout
          * @return
          */
-        public Builder intoLayout(int layout) {
+        public Builder inflatedInto(int layout) {
             lastItem.setLayout(layout);
             return this;
         }
@@ -180,7 +180,7 @@ public class MenuLayout extends LinearLayout {
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     MenuItem item = (MenuItem) view.getTag();
                     if(item.getListener() != null) {
-                        item.getListener().onClick(item);
+                        item.getListener().onItemClick(item);
                         return true;
                     }
                     return false;
@@ -195,7 +195,7 @@ public class MenuLayout extends LinearLayout {
                     MenuItem item = (MenuItem) menuLayout.itemsListView.getAdapter().getItem(position);
                     menuLayout.itemsListView.setSelection(position);
                     if(item.getListener() != null) {
-                        item.getListener().onClick(item);
+                        item.getListener().onItemClick(item);
                     }
                 }
             });

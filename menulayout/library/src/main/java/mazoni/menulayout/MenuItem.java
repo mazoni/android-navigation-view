@@ -58,8 +58,16 @@ public class MenuItem {
     }
 
     public static interface Listener {
-        void onClick(MenuItem menuItem);
-        void onLongClick(MenuItem menuItem);
+        void onItemClick(MenuItem menuItem);
+        void onItemLongClick(MenuItem menuItem);
+    }
+
+    public static abstract class ListenerAdapter implements Listener {
+        @Override
+        public void onItemClick(MenuItem menuItem) {}
+
+        @Override
+        public void onItemLongClick(MenuItem menuItem) {}
     }
 
     @Override

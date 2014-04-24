@@ -1,9 +1,11 @@
 package mazoni.menulayout.example;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import mazoni.menulayout.MenuLayout;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +14,30 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MenuLayout menuLayout = (MenuLayout) findViewById(R.id.menu_layout);
+        MenuLayout.Builder menuLayoutBuilder = menuLayout.getBuilder();
+        mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
+            @Override
+            public void onClick(mazoni.menulayout.MenuItem menuItem) {
+
+            }
+
+            @Override
+            public void onLongClick(mazoni.menulayout.MenuItem menuItem) {
+
+            }
+        };
+        menuLayoutBuilder.
+                addMenuItem("Category 1", listener).setAsSection().
+                addMenuItem("Item 1", listener).
+                addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
+                addMenuItem("Item 2", listener).
+                addMenuItem("Category 2", listener).setAsSection().
+                addMenuItem(R.drawable.icon_star, "item with icon", "with-icon", listener).
+                addMenuItem("Item 1", listener).
+                addMenuItem("Item 2", listener).
+                create();
+
     }
 
 

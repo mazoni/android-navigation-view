@@ -40,4 +40,6 @@ Then get the view and build your menu using the builder within MenuLayout:
             addMenuItem("Item 2", listener).
             create();
 
+## Example Result
 
+![Example](https://raw.githubusercontent.com/mazoni/android-menu-layout/master/result.png "Result Example")

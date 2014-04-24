@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,22 +13,21 @@ import java.util.List;
 /**
  * Class that should be add to the layout where the menu is supposed to appear
  */
-public class MenuLayout extends LinearLayout {
+public class MenuView extends ListView {
 
-    private ListView itemsListView;
     private Builder builder;
 
-    public MenuLayout(Context context) {
+    public MenuView(Context context) {
         super(context);
         init();
     }
 
-    public MenuLayout(Context context, AttributeSet attrs) {
+    public MenuView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public MenuLayout(Context context, AttributeSet attrs, int defStyle) {
+    public MenuView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -38,14 +36,7 @@ public class MenuLayout extends LinearLayout {
         return builder;
     }
 
-    public ListView getItemsListView() {
-        return this.itemsListView;
-    }
-
-
     private void init() {
-        itemsListView = new ListView(getContext());
-        this.addView(itemsListView);
         builder = new Builder();
     }
 
@@ -165,17 +156,17 @@ public class MenuLayout extends LinearLayout {
          */
         public void create() {
             MenuItemAdapter menuItemAdapter = new MenuItemAdapter(getContext(), 0, items);
-            MenuLayout.this.itemsListView.setAdapter(menuItemAdapter);
-            setListeners(MenuLayout.this);
+            MenuView.this.setAdapter(menuItemAdapter);
+            setListeners(MenuView.this);
         }
 
-        private void setListeners(MenuLayout menuLayout) {
-            setOnClickListener(menuLayout);
-            setOnLongClickListener(menuLayout);
+        private void setListeners(MenuView menuView) {
+            setOnClickListener(menuView);
+            setOnLongClickListener(menuView);
         }
 
-        private void setOnLongClickListener(MenuLayout menuLayout) {
-            menuLayout.itemsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        private void setOnLongClickListener(MenuView menuView) {
+            MenuView.this.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     MenuItem item = (MenuItem) view.getTag();
@@ -188,12 +179,12 @@ public class MenuLayout extends LinearLayout {
             });
         }
 
-        private void setOnClickListener(final MenuLayout menuLayout) {
-            menuLayout.itemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        private void setOnClickListener(final MenuView menuView) {
+            MenuView.this.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    MenuItem item = (MenuItem) menuLayout.itemsListView.getAdapter().getItem(position);
-                    menuLayout.itemsListView.setSelection(position);
+                    MenuItem item = (MenuItem) MenuView.this.getAdapter().getItem(position);
+                    MenuView.this.setSelection(position);
                     if(item.getListener() != null) {
                         item.getListener().onItemClick(item);
                     }

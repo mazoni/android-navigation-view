@@ -1,12 +1,13 @@
 package mazoni.menulayout.example;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import mazoni.menulayout.MenuLayout;
+import mazoni.menulayout.MenuView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,8 +16,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MenuLayout menuLayout = (MenuLayout) findViewById(R.id.menu_layout);
-        MenuLayout.Builder menuLayoutBuilder = menuLayout.getBuilder();
+
+        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        MenuView menuView = (MenuView) findViewById(R.id.menu_layout);
+        MenuView.Builder menuLayoutBuilder = menuView.getBuilder();
         mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
             @Override
             public void onItemClick(mazoni.menulayout.MenuItem menuItem) {

@@ -42,3 +42,52 @@ Then get the view and build your menu using the builder within MenuLayout:
 ## Example Result
 
 ![Example](https://raw.githubusercontent.com/mazoni/android-navigation-view/master/result.png "Result Example")
+
+## Building
+### Gradle
+
+#### From sonatype
+
+Add sonatype snapshot repository to your `build.gradle`:
+
+```groovy
+buildscript {
+  repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+}
+ 
+repositories {
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+```
+
+Then declare navigationview within your dependencies:
+
+```groovy
+dependencies {
+  ...
+  compile 'com.github.mazoni.navigationview:library:0.1-SNAPSHOT@aar'
+  ...
+}
+```
+
+License
+=======
+
+    Copyright 2013 Square, Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
+ [1]: http://github.com/mazoni/android-navigation-view/

@@ -1,8 +1,8 @@
-package mazoni.menulayout;
+package mazoni.navigationview;
 
 import android.graphics.drawable.Drawable;
 
-public class MenuItem {
+public class NavigationItem {
 
     private Drawable icon;
     private String label;
@@ -10,7 +10,7 @@ public class MenuItem {
     private int layout;
     private Listener listener;
 
-    public MenuItem(Drawable icon, String label, String tag, int layout) {
+    public NavigationItem(Drawable icon, String label, String tag, int layout) {
         this.icon = icon;
         this.label = label;
         this.tag = tag;
@@ -58,16 +58,16 @@ public class MenuItem {
     }
 
     public static interface Listener {
-        void onItemClick(MenuItem menuItem);
-        void onItemLongClick(MenuItem menuItem);
+        void onItemClick(NavigationItem navigationItem);
+        void onItemLongClick(NavigationItem navigationItem);
     }
 
     public static abstract class ListenerAdapter implements Listener {
         @Override
-        public void onItemClick(MenuItem menuItem) {}
+        public void onItemClick(NavigationItem navigationItem) {}
 
         @Override
-        public void onItemLongClick(MenuItem menuItem) {}
+        public void onItemLongClick(NavigationItem navigationItem) {}
     }
 
     @Override
@@ -75,10 +75,10 @@ public class MenuItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MenuItem menuItem = (MenuItem) o;
+        NavigationItem navigationItem = (NavigationItem) o;
 
-        if (icon != null ? !icon.equals(menuItem.icon) : menuItem.icon != null) return false;
-        if (label != null ? !label.equals(menuItem.label) : menuItem.label != null) return false;
+        if (icon != null ? !icon.equals(navigationItem.icon) : navigationItem.icon != null) return false;
+        if (label != null ? !label.equals(navigationItem.label) : navigationItem.label != null) return false;
 
         return true;
     }

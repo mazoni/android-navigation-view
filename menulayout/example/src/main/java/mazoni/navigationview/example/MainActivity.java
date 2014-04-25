@@ -1,4 +1,4 @@
-package mazoni.menulayout.example;
+package mazoni.navigationview.example;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import mazoni.menulayout.MenuView;
+import mazoni.menulayout.example.R;
+import mazoni.navigationview.NavigationItem;
+import mazoni.navigationview.NavigationView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,27 +21,27 @@ public class MainActivity extends ActionBarActivity {
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
-        MenuView menuView = (MenuView) findViewById(R.id.menu_layout);
-        MenuView.Builder menuLayoutBuilder = menuView.getBuilder();
-        mazoni.menulayout.MenuItem.Listener listener = new mazoni.menulayout.MenuItem.Listener() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView.Builder menuLayoutBuilder = navigationView.getBuilder();
+        NavigationItem.Listener listener = new NavigationItem.Listener() {
             @Override
-            public void onItemClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemClick(NavigationItem menuItem) {
                 Log.d("MenuItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
             }
 
             @Override
-            public void onItemLongClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemLongClick(NavigationItem menuItem) {
                 Log.d("MenuItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
             }
         };
-        mazoni.menulayout.MenuItem.Listener specialListener = new mazoni.menulayout.MenuItem.Listener() {
+        NavigationItem.Listener specialListener = new NavigationItem.Listener() {
             @Override
-            public void onItemClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemClick(NavigationItem menuItem) {
                 Log.d("SpecialItemClicked", String.format("menuItem clicked %s",menuItem.getTag()));
             }
 
             @Override
-            public void onItemLongClick(mazoni.menulayout.MenuItem menuItem) {
+            public void onItemLongClick(NavigationItem menuItem) {
                 Log.d("SpecialItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
             }
         };

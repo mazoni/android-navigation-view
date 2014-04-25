@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        NavigationView.Builder menuLayoutBuilder = navigationView.getBuilder();
+        NavigationView.Builder navigationBuilder = navigationView.getBuilder();
         NavigationItem.Listener listener = new NavigationItem.Listener() {
             @Override
             public void onItemClick(NavigationItem menuItem) {
@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
                 Log.d("SpecialItemLongClicked", String.format("menuItem long clicked %s",menuItem.getTag()));
             }
         };
-        menuLayoutBuilder.inform(listener).
+        navigationBuilder.inform(listener).
                 addItem("Category 1").asSection().
                 addItem("Item 1").
                 addItem("item with icon").withIcon(R.drawable.icon_star).tagged("with-icon").

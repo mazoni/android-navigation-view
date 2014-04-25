@@ -1,7 +1,6 @@
-package mazoni.menulayout;
+package mazoni.navigationview;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,36 +10,36 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MenuItemAdapter extends ArrayAdapter<MenuItem> {
+public class NavigationItemAdapter extends ArrayAdapter<NavigationItem> {
 
     private LayoutInflater layoutInflater;
 
-    public MenuItemAdapter(Context context, int resource) {
+    public NavigationItemAdapter(Context context, int resource) {
         super(context, resource);
         setup();
     }
 
-    public MenuItemAdapter(Context context, int resource, int textViewResourceId) {
+    public NavigationItemAdapter(Context context, int resource, int textViewResourceId) {
         super(context, resource, textViewResourceId);
         setup();
     }
 
-    public MenuItemAdapter(Context context, int resource, MenuItem[] objects) {
+    public NavigationItemAdapter(Context context, int resource, NavigationItem[] objects) {
         super(context, resource, objects);
         setup();
     }
 
-    public MenuItemAdapter(Context context, int resource, int textViewResourceId, MenuItem[] objects) {
+    public NavigationItemAdapter(Context context, int resource, int textViewResourceId, NavigationItem[] objects) {
         super(context, resource, textViewResourceId, objects);
         setup();
     }
 
-    public MenuItemAdapter(Context context, int resource, List<MenuItem> objects) {
+    public NavigationItemAdapter(Context context, int resource, List<NavigationItem> objects) {
         super(context, resource, objects);
         setup();
     }
 
-    public MenuItemAdapter(Context context, int resource, int textViewResourceId, List<MenuItem> objects) {
+    public NavigationItemAdapter(Context context, int resource, int textViewResourceId, List<NavigationItem> objects) {
         super(context, resource, textViewResourceId, objects);
         setup();
     }
@@ -48,7 +47,7 @@ public class MenuItemAdapter extends ArrayAdapter<MenuItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        MenuItem item = getItem(position);
+        NavigationItem item = getItem(position);
 
         ViewHolder holder;
         if(convertView == null) {

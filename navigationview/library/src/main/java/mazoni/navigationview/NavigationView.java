@@ -1,4 +1,4 @@
-package mazoni.menulayout;
+package mazoni.navigationview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,21 +13,21 @@ import java.util.List;
 /**
  * Class that should be add to the layout where the menu is supposed to appear
  */
-public class MenuView extends ListView {
+public class NavigationView extends ListView {
 
     private Builder builder;
 
-    public MenuView(Context context) {
+    public NavigationView(Context context) {
         super(context);
         init();
     }
 
-    public MenuView(Context context, AttributeSet attrs) {
+    public NavigationView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public MenuView(Context context, AttributeSet attrs, int defStyle) {
+    public NavigationView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -41,14 +41,14 @@ public class MenuView extends ListView {
     }
 
     public class Builder {
-        private List<MenuItem> items;
-        private MenuItem lastItem;
+        private List<NavigationItem> items;
+        private NavigationItem lastItem;
         private int sectionLayout = R.layout.section_item;
-        private int itemLayout = R.layout.menu_item;
-        private MenuItem.Listener defaultListener = null;
+        private int itemLayout = R.layout.navigation_item;
+        private NavigationItem.Listener defaultListener = null;
 
         protected Builder() {
-            items = new ArrayList<MenuItem>();
+            items = new ArrayList<NavigationItem>();
         }
 
         /**
@@ -77,7 +77,7 @@ public class MenuView extends ListView {
          * @return
          */
         public Builder addItem(String label) {
-            addItem(0, label, String.valueOf(items.size()), R.layout.menu_item, defaultListener);
+            addItem(0, label, String.valueOf(items.size()), R.layout.navigation_item, defaultListener);
             return this;
         }
 
@@ -136,18 +136,18 @@ public class MenuView extends ListView {
          * @param listener
          * @return
          */
-        public Builder inform(MenuItem.Listener listener) {
+        public Builder inform(NavigationItem.Listener listener) {
             if(lastItem != null) lastItem.setListener(listener);
             else defaultListener = listener;
             return this;
         }
 
-        private Builder addItem(int icon, String label, String tag, int layout, MenuItem.Listener listener) {
+        private Builder addItem(int icon, String label, String tag, int layout, NavigationItem.Listener listener) {
             Drawable iconDrawable = icon == 0? null : getResources().getDrawable(icon);
-            MenuItem menuItem = new MenuItem(iconDrawable, label, tag, layout);
-            menuItem.setListener(listener);
-            items.add(menuItem);
-            lastItem = menuItem;
+            NavigationItem navigationItem = new NavigationItem(iconDrawable, label, tag, layout);
+            navigationItem.setListener(listener);
+            items.add(navigationItem);
+            lastItem = navigationItem;
             return this;
         }
 
@@ -155,21 +155,21 @@ public class MenuView extends ListView {
          * Creates an adapter using the items added so far
          */
         public void create() {
-            MenuItemAdapter menuItemAdapter = new MenuItemAdapter(getContext(), 0, items);
-            MenuView.this.setAdapter(menuItemAdapter);
-            setListeners(MenuView.this);
+            NavigationItemAdapter navigationItemAdapter = new NavigationItemAdapter(getContext(), 0, items);
+            NavigationView.this.setAdapter(navigationItemAdapter);
+            setListeners(NavigationView.this);
         }
 
-        private void setListeners(MenuView menuView) {
-            setOnClickListener(menuView);
-            setOnLongClickListener(menuView);
+        private void setListeners(NavigationView navigationView) {
+            setOnClickListener(navigationView);
+            setOnLongClickListener(navigationView);
         }
 
-        private void setOnLongClickListener(MenuView menuView) {
-            MenuView.this.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        private void setOnLongClickListener(NavigationView navigationView) {
+            NavigationView.this.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    MenuItem item = (MenuItem) view.getTag();
+                    NavigationItem item = (NavigationItem) view.getTag();
                     if(item.getListener() != null) {
                         item.getListener().onItemClick(item);
                         return true;
@@ -179,12 +179,12 @@ public class MenuView extends ListView {
             });
         }
 
-        private void setOnClickListener(final MenuView menuView) {
-            MenuView.this.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        private void setOnClickListener(final NavigationView navigationView) {
+            NavigationView.this.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    MenuItem item = (MenuItem) MenuView.this.getAdapter().getItem(position);
-                    MenuView.this.setSelection(position);
+                    NavigationItem item = (NavigationItem) NavigationView.this.getAdapter().getItem(position);
+                    NavigationView.this.setSelection(position);
                     if(item.getListener() != null) {
                         item.getListener().onItemClick(item);
                     }

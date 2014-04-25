@@ -46,14 +46,15 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         navigationBuilder.inform(listener).
-                addItem("Category 1").asSection().
-                addItem("Item 1").
-                addItem("item with icon").withIcon(R.drawable.icon_star).tagged("with-icon").
+                addItem("Section 1").asSection().
+                addItem("Normal item 1").
+                addItem("Custom layout").inflatedInto(R.layout.custom_layout).
+                addItem("tagged item").tagged("tagged-item").
                 addItem("Special Item").inform(specialListener).
-                addItem("Category 2").asSection().
+                addItem("Section with icon").withIcon(R.drawable.icon_star).asSection().
                 addItem("item with icon").withIcon(R.drawable.icon_star).
-                addItem("Item 1").
-                addItem("Item 2").
+                addItem(R.string.string_from_resource).
+                addItem("Item not clickable").notClickable().
                 create();
 
     }

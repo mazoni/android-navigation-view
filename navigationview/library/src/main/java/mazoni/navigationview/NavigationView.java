@@ -82,6 +82,17 @@ public class NavigationView extends ListView {
         }
 
         /**
+         * Loads the stringResource from strings and add an item using it
+         * @param stringResource
+         * @return
+         */
+        public Builder addItem(int stringResource) {
+            String label = getResources().getString(stringResource);
+            addItem(0, label, String.valueOf(items.size()), R.layout.navigation_item, defaultListener);
+            return this;
+        }
+
+        /**
          * Sets the last added item to use section layout
          * @return
          */
@@ -142,10 +153,21 @@ public class NavigationView extends ListView {
             return this;
         }
 
+        /**
+         * Defines the last added item as notClickable
+         */
+        public Builder notClickable() {
+            if(lastItem != null) lastItem.setListener(null);
+            return this;
+        }
+
+
+
+
         private Builder addItem(int icon, String label, String tag, int layout, NavigationItem.Listener listener) {
             Drawable iconDrawable = icon == 0? null : getResources().getDrawable(icon);
             NavigationItem navigationItem = new NavigationItem(iconDrawable, label, tag, layout);
-            navigationItem.setListener(listener);
+            if(listener != null) navigationItem.setListener(listener);
             items.add(navigationItem);
             lastItem = navigationItem;
             return this;

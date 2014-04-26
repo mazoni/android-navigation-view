@@ -67,7 +67,7 @@ Then declare navigationview within your dependencies:
 ```groovy
 dependencies {
   ...
-  compile 'com.github.mazoni.navigationview:library:0.1-SNAPSHOT@aar'
+  compile 'com.github.mazoni.navigationview:library:1.0-SNAPSHOT@aar'
   ...
 }
 ```

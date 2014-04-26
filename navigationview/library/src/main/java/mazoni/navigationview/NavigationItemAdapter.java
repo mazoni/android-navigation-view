@@ -64,7 +64,7 @@ public class NavigationItemAdapter extends ArrayAdapter<NavigationItem> {
         if(item.getIcon() != null) {
             holder.icon.setImageDrawable(item.getIcon());
             holder.icon.setVisibility(View.VISIBLE);
-        } else {
+        } else if(holder.icon != null) {
             holder.icon.setVisibility(View.INVISIBLE);
         }
 

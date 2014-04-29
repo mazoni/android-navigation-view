@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="red">#FF0000</color>
+    <color name="drawer_background">#ff4d4d4d</color>
+    <color name="light_blue">#ff37ceff</color>
 </resources>

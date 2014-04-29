@@ -33,7 +33,7 @@
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:background="@android:color/darker_gray"
+        android:background="@color/drawer_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

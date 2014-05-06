@@ -191,7 +191,7 @@ public class NavigationView extends ListView {
             NavigationView.this.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    NavigationItem item = (NavigationItem) view.getTag();
+                    NavigationItem item = (NavigationItem) NavigationView.this.getAdapter().getItem(position);
                     if(item.getListener() != null) {
                         item.getListener().onItemClick(item);
                         return true;
